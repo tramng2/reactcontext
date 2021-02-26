@@ -1,10 +1,20 @@
 import React from 'react';
+import { ThemeContext } from './ThemeContext'
 
-function HeaderButton(props) {
+function HeaderButton() {
   return (
-    <div>
-      <button>Press me</button>
-    </div>
+    <ThemeContext.Consumer>
+      {({ theme, toggleTheme }) => (
+        <button
+          onClick={toggleTheme}
+          style={{
+            backgroundColor: theme.backgroundColor,
+            color: theme.color
+          }}>
+          Press me
+        </button>
+      )}
+    </ThemeContext.Consumer>
   );
 }
 
